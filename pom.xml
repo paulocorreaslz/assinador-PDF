@@ -1,0 +1,225 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<!--  	<parent>
+		<artifactId>Firmador_Parent</artifactId>
+		<groupId>ar.gob.onti.firmador</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>-->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ar.gob.onti.firmador</groupId>
+	<artifactId>FirmaAppletOK</artifactId>
+	<packaging>jar</packaging>
+	<name>FirmaAppletOK</name>
+	<version>1.0</version>
+
+	<build>
+		<sourceDirectory>app/src</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>app/resource</directory>
+			</resource>
+		</resources>
+		<!-- <testOutputDirectory>target/test-classes</testOutputDirectory>
+        	<testSourceDirectory>test/src</testSourceDirectory> 
+
+		<testResources>
+			<testResource>
+				<directory>test/resource</directory>
+			</testResource>
+		</testResources>
+-->
+		<plugins>
+		<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				  <version>2.3.2</version>
+
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+				<inherited>true</inherited>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2-beta-5</version>
+				<configuration>
+				<archive>
+					<addMavenDescriptor>false</addMavenDescriptor>
+					<manifestEntries>
+						<Permissions>all-permissions</Permissions>
+						<Caller-Allowable-Codebase>*</Caller-Allowable-Codebase>
+						<Sealed>true</Sealed>
+						<Codebase>*</Codebase>
+						<Application-Library-Allowable-Codebase>*</Application-Library-Allowable-Codebase>
+						<Application-Name>Assinador Digital PDF</Application-Name>
+						<Implementation-Vendor>Defensoria Publica do MA</Implementation-Vendor>
+					</manifestEntries>
+				</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id> <!-- this is used for inheritance merges -->
+						<phase>package</phase> <!-- append to the packaging phase. -->
+						<goals>
+							<goal>single</goal> <!-- goals == mojos -->
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		    <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-resources-plugin</artifactId>
+		        <version>2.4.3</version>
+		        <configuration>
+		            <encoding>${project.build.sourceEncoding}</encoding>
+		        </configuration>
+		    </plugin>
+
+		</plugins>
+	</build>
+	<dependencies>
+    <dependency>
+		<groupId>com.lowagie</groupId>
+		<artifactId>itext</artifactId>
+    	<version>4.2.2</version>
+      <scope>provided</scope>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+     	<groupId>org.bouncycastle</groupId>
+     	<artifactId>bcprov-jdk16</artifactId>
+     	<version>1.44</version>
+     </dependency>	 
+	 <dependency>
+      <groupId>plugin</groupId>
+      <artifactId>plugin</artifactId>
+      <version>1.6</version>
+    </dependency>
+	<!--
+	<dependency>
+	    <groupId>accv</groupId>
+	    <artifactId>arangi_base</artifactId>
+	    <version>1.1.5</version>
+	  </dependency> -->    
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-ext-jdk16</artifactId>
+			<version>1.45</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			 <scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.2.2</version>
+		</dependency>
+	 <dependency>
+	  <groupId>com.itextpdf.maven</groupId>
+	  <artifactId>itextdoc</artifactId>
+	  <version>2.0.0</version>
+	  <exclusions>
+	   <exclusion>
+	    <groupId>com.itextpdf</groupId>
+	    <artifactId>itextpdf</artifactId>
+	   </exclusion>
+	  </exclusions>
+	 </dependency>
+	 <dependency>
+	  <groupId>itext</groupId>
+	  <artifactId>itext</artifactId>
+	  <version>5.0.2</version>
+	 </dependency>
+	</dependencies>
+	<profiles>
+    <profile>
+      <id>production</id>
+      <activation>
+        <property><name>FIRMADOR_PROD</name></property>
+      </activation>
+      <build>
+        <plugins>
+
+
+			<!--    FIRMA DEL JAR -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jarsigner-plugin</artifactId>
+				<version>1.2</version>
+				<executions>
+					<execution>
+						<id>sign</id>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+ 				    <keystore>${env.FIRMADOR_KEYSTORE}</keystore>			
+					<alias>${env.FIRMADOR_ALIAS}</alias>
+					<storepass>${env.FIRMADOR_STOREPASS}</storepass>
+					<keypass>${env.FIRMADOR_KEYPASS}</keypass>
+				</configuration>
+			</plugin>
+
+
+			<!--    POST COMPILACION -->
+             <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                  <execution>
+                    <id>copy</id>
+                    <phase>install</phase>
+                    <configuration>
+                      <tasks>
+                        <copy file="target/FirmaApplet-1.0-jar-with-dependencies.jar" tofile="sample/www/firmador.jar"/>
+                      </tasks>
+                    </configuration>
+                    <goals>
+                      <goal>run</goal>
+                    </goals>
+                  </execution> 
+                </executions>
+              </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+    <properties>
+        <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+    </properties>
+</project>
