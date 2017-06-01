@@ -281,7 +281,7 @@ public class VentanaPrincipal implements Runnable  {
 			botonVerPdf = new javax.swing.JButton();
 			botonVerPdf.setText(myProps.getString("visualizar"));
 			botonVerPdf.setFont(new java.awt.Font(letra, Font.PLAIN, 11));
-			botonVerPdf.setToolTipText("Visualizar el PDF en un programa externo, por ejemplo Adobe Reader");
+			botonVerPdf.setToolTipText("Visualizar o PDF em um programa externo.");
 			botonVerPdf.setVisible(false);			
 			botonVerPdf.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -500,7 +500,7 @@ public class VentanaPrincipal implements Runnable  {
 		}
 		if (!myProps.readProps() ) {
 			JOptionPane.showMessageDialog(container,
-					"Problemas en la configuración de la aplicación\n"
+					"Problemas na configuração da aplicação\n"
 					+ myProps.getPropsError(), "Error",
 					JOptionPane.ERROR_MESSAGE);
 			retValue = false;
@@ -516,7 +516,7 @@ public class VentanaPrincipal implements Runnable  {
 		boolean retValue = true;
 		String msgErrInitLog ="";
 		if (myProps == null) {
-			msgErrInitLog = "Método MainWindow.initLogFile: Error en lectura previa de configuración";
+			msgErrInitLog = "Método MainWindow.initLogFile: Erro na leitura previa da configuração";
 			retValue = false;
 		} else {
 			// Creacion del archivo de log
@@ -546,7 +546,7 @@ public class VentanaPrincipal implements Runnable  {
 				// Incio loggeo acciones
 				firmaControler.writeLogFile("INIT PROCESS  ------------------", 0);
 			} catch (IOException e){
-				msgErrInitLog = "Método MainWindow.initLogFile(): Error al inicializar el archivo de log"; 
+				msgErrInitLog = "Método MainWindow.initLogFile(): Erro ao inicializar o arquivo de log"; 
 				if (e.getMessage() != null) {
 					msgErrInitLog += "\nMensaje JVM: " + e.getMessage();
 				}

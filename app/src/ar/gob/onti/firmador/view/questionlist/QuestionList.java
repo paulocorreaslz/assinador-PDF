@@ -53,7 +53,7 @@ public class QuestionList {
 	/* Crea el JDialog principal que contiene los demas elementos */
 	private JDialog getCreateDialog(Frame mainWndw) {
         if(mainDlg==null){
-			mainDlg = new JDialog(mainWndw,"Preguntas de confirmación", true);
+			mainDlg = new JDialog(mainWndw,"Preguntas de confirmação", true);
 			WindowListener wndListenClose = new WindowAdapter() {
 				public void windowClosing(WindowEvent e) {
 	

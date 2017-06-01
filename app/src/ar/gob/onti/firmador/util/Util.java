@@ -153,7 +153,7 @@ public class Util {
 
 		InputStream iStream = new Util().getClass().getClassLoader().getResourceAsStream(classPathFile);
 		if (iStream == null) {
-			throw new FileNotFoundException("No es posible leer el fichero '" + classPathFile + "'dentro del classpath");
+			throw new FileNotFoundException("Não foi possível ler o arquivo '" + classPathFile + "'dentro do classpath");
 		}
 		saveFile(file, iStream);
 	}
@@ -177,7 +177,7 @@ lObjFile.close();
 return lBytDatos;
 
 		} catch (IOException e) {
-			  System.out.println ("Error cargando el fichero de " + file + " " + e.getMessage());
+			  System.out.println ("Error carregando o arquivo " + file + " " + e.getMessage());
 			  throw e;
 		}
 	}
@@ -203,7 +203,7 @@ return lBytDatos;
 return baos.toByteArray();
 
 		} catch (IOException e) {
-			System.out.println ("Error cargando el stream de lectura " + e.getMessage());
+			System.out.println ("Error carregando o stream de leitura " + e.getMessage());
 			throw e;
 		}
 	}

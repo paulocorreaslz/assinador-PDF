@@ -25,7 +25,7 @@ import ar.gob.onti.firmador.controler.StoreDctnry;
 	public static final String ROOT_CERTS = "Certificados"; 
 	 
 	// Names of the columns.
-    private static  String[] cNames = { "Entidad/Persona", "Número Serie", "Expira"};
+    private static  String[] cNames = { "Entidade/Pessoa", "Número Série", "Expira"};
 	// Types of the columns.
     private static  Class[] cTypes = { TreeTableModel.class, String.class, String.class };
 	private  StoreDctnry strDctnry;
